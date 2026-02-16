@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <h1>Daily Task</h1>
+    </header>
+
+    <div class="task-container">
+
+        <div class="category meeting">Meeting</div>
+        <div class="task-card">
+            <p class="time">10:00 AM - 1:00 PM</p>
+            <p>Business meeting</p>
+            <p>Staff meeting</p>
+        </div>
+
+        <div class="category study">Study</div>
+        <div class="task-card pink">
+            <p class="time">8:00 AM - 9:45 PM</p>
+            <p>Read UX Case Study</p>
+            <p>University Homework</p>
+        </div>
+
+        <div class="category travel">Travel</div>
+        <div class="task-card yellow">
+            <p class="time">5:00 PM - 6:00 PM</p>
+            <p>Travel to city</p>
+            <p>Visit friend</p>
+        </div>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <div class="add-box">
+        <input type="text" id="taskInput" placeholder="Add new task">
+        <button onclick="addTask()">+</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
