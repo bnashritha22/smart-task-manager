@@ -1,53 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Smart Task Manager</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Smart Task Manager</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a5af9, #9f7aea);
+    }
+
+    .app {
+      background: white;
+      width: 420px;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      background: #f3f4ff;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .stats h3 {
+      margin: 0;
+      color: #6a5af9;
+    }
+
+    .calendar {
+      background: #f6f7fb;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+      color: #6a5af9;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      flex: 1;
+    }
+
+    button {
+      background: #6a5af9;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      background: #f6f7fb;
+    }
+
+    .today {
+      border-left: 5px solid #6a5af9;
+      background: #eef0ff;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .high { background: #e53e3e; }
+    .medium { background: #dd6b20; }
+    .low { background: #38a169; }
+
+.task button {
+  border: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #6a5af9;
+  color: white;
+}
+
+
+  </style>
 </head>
 
 <body>
 
-<div class="app">
+  <div class="app">
+    <h1>Smart Task Manager</h1>
 
-    <header>
-        <h1>Daily Task</h1>
-    </header>
-
-    <div class="task-container">
-
-        <div class="category meeting">Meeting</div>
-        <div class="task-card">
-            <p class="time">10:00 AM - 1:00 PM</p>
-            <p>Business meeting</p>
-            <p>Staff meeting</p>
-        </div>
-
-        <div class="category study">Study</div>
-        <div class="task-card pink">
-            <p class="time">8:00 AM - 9:45 PM</p>
-            <p>Read UX Case Study</p>
-            <p>University Homework</p>
-        </div>
-
-        <div class="category travel">Travel</div>
-        <div class="task-card yellow">
-            <p class="time">5:00 PM - 6:00 PM</p>
-            <p>Travel to city</p>
-            <p>Visit friend</p>
-        </div>
-
-        <ul id="taskList"></ul>
-
+    <div class="stats">
+      <div>
+        <h3 id="total">0</h3>
+        <p>Total</p>
+      </div>
+      <div>
+        <h3 id="completed">0</h3>
+        <p>Completed</p>
+      </div>
+      <div>
+        <h3 id="pending">0</h3>
+        <p>Pending</p>
+      </div>
     </div>
 
-    <div class="add-box">
-        <input type="text" id="taskInput" placeholder="Add new task">
-        <button onclick="addTask()">+</button>
+    <div class="calendar" id="todayDate"></div>
+<div class="calendar" id="productivityScore"></div>
+
+
+    <div class="input-group">
+      <input id="title" placeholder="Enter task">
     </div>
 
-</div>
+    <div class="input-group">
+      <select id="priority">
+        <option>Low</option>
+        <option selected>Medium</option>
+        <option>High</option>
+      </select>
 
-<script src="script.js"></script>
+      <select id="category">
+        <option>Study</option>
+        <option>Personal</option>
+        <option>Work</option>
+        <option>Health</option>
+      </select>
+
+      <input type="date" id="dueDate">
+    </div>
+
+    <button onclick="addTask()">Add Task</button>
+
+    <div id="taskList"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
